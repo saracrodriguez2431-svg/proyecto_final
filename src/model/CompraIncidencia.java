@@ -1,7 +1,4 @@
-package patrones.comportamentales.state;
-
-import interfaces.EstadoCompra;
-import model.Compra;
+package model;
 
 public class CompraIncidencia implements EstadoCompra {
     public void manejarEstado(Compra compra) {

@@ -1,7 +1,5 @@
 package model;
 
-import interfaces.EstadoCompra;
-
 public class Compra {
     private String id;
     private EstadoCompra estado;
