@@ -3,7 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Usuario {
+public class Usuario implements Observer {
+
     private String id;
     private String nombre;
     private String email;
@@ -18,6 +19,10 @@ public class Usuario {
 
     public void agregarCompra(Compra compra) {
         compras.add(compra);
+    }
+
+    public void actualizar(String mensaje) {
+        System.out.println(nombre + " recibió notificación: " + mensaje);
     }
 
     public String getId() {

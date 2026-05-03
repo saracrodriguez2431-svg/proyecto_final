@@ -6,7 +6,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EventoService {
+    private static EventoService instancia;
+
     private List<Evento> eventos = new ArrayList<>();
+
+    private EventoService() {
+        eventos = new ArrayList<>();
+    }
+
+    public static EventoService getInstancia() {
+        if (instancia == null) {
+            instancia = new EventoService();
+        }
+        return instancia;
+    }
 
     public void crearEvento(Evento evento) {
         eventos.add(evento);
