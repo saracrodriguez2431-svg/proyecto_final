@@ -8,12 +8,14 @@ public class Compra implements CompraBase{
     private EstadoCompra estado;
     private double total;
     private LocalDate fecha;
+    private Asiento asiento;
 
-    public Compra(double total, EstadoCompra estadoInicial) {
+    public Compra(double total, EstadoCompra estadoInicial, Asiento asiento) {
         this.id = UUID.randomUUID().toString();
         this.fecha = LocalDate.now();
         this.total = total;
         this.estado = estadoInicial;
+        this.asiento = asiento;
     }
 
     public String getId() {
@@ -45,7 +47,7 @@ public class Compra implements CompraBase{
     }
 
     public String getDescripcion() {
-        return "Compra Base";
+        return "Entrada = Fila: " + asiento.getFila() + "/n" + "Asiento: " + asiento.getNumero();
     }
 
     public void procesar() {

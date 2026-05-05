@@ -2,7 +2,7 @@ package model;
 
 import java.util.UUID;
 
-public class Asiento {
+public class Asiento implements Prototype<Asiento> {
 
     private String idAsiento;
     private String fila;
@@ -34,6 +34,10 @@ public class Asiento {
 
     public void liberar() {
         estado = EstadoAsiento.DISPONIBLE;
+    }
+
+    public Asiento clonar(){
+        return new Asiento(this.numero, this.fila);
     }
 
     public String getNumero() {
