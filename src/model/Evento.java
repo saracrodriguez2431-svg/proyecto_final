@@ -8,17 +8,24 @@ import java.util.UUID;
 public class Evento implements Subject{
     private String id;
     private String nombre;
+    private String ciudad;
     private String descripcion;
     private LocalDateTime fecha;
     private EstadoEvento estado;
     private List<Zona> zonas;
     private List<Observer> observers;
 
-    public Evento() {}
+    public Evento() {
+        this.id = UUID.randomUUID().toString();
+        this.zonas = new ArrayList<>();     // Inicializa aquí
+        this.observers = new ArrayList<>(); // Inicializa aquí
+        this.estado = EstadoEvento.BORRADOR;
+    }
 
-    public Evento(String nombre, String descripcion, LocalDateTime fecha) {
+    public Evento(String nombre, String ciudad, String descripcion, LocalDateTime fecha) {
         this.id = UUID.randomUUID().toString();
         this.nombre = nombre;
+        this.ciudad = ciudad;
         this.descripcion = descripcion;
         this.fecha = fecha;
         this.estado = EstadoEvento.BORRADOR;
@@ -42,22 +49,22 @@ public class Evento implements Subject{
 
     public void publicar() {
         this.estado = EstadoEvento.PUBLICADO;
-        notificarObservers("El evento" + nombre + "ha sido publicado");
+        notificarObservers("El evento " + nombre + " ha sido publicado");
     }
 
     public void pausar() {
         this.estado = EstadoEvento.PAUSADO;
-        notificarObservers("El evento" + nombre + "ha sido pausado");
+        notificarObservers("El evento " + nombre + " ha sido pausado");
     }
 
     public void cancelar() {
         this.estado = EstadoEvento.CANCELADO;
-        notificarObservers("El evento" + nombre + "ha sido cancelado");
+        notificarObservers("El evento " + nombre + " ha sido cancelado");
     }
 
     public void finalizar() {
         this.estado = EstadoEvento.FINALIZADO;
-        notificarObservers("El evento" + nombre + "ha sido finalizado");
+        notificarObservers("El evento " + nombre + " ha sido finalizado");
     }
 
     public void agregarZona(Zona zona) {
@@ -104,6 +111,13 @@ public class Evento implements Subject{
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
     }
 
     public String getDescripcion() {

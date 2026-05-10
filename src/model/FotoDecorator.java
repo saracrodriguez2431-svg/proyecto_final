@@ -6,7 +6,7 @@ public class FotoDecorator extends CompraDecorator {
     }
 
     public double getTotal() {
-        return super.getTotal() + 1000000;
+        return super.getTotal() + 150000;
     }
 
     public String getDescripcion() {

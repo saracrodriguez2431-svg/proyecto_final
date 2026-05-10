@@ -18,6 +18,11 @@ public class EventoBuilder {
         evento.setNombre(nombre);
         return this;
     }
+
+    public EventoBuilder setCiudad(String ciudad){
+        evento.setCiudad(ciudad);
+        return this;
+    }
     public EventoBuilder setDescripcion(String descripcion) {
         evento.setDescripcion(descripcion);
         return this;
@@ -34,4 +39,5 @@ public class EventoBuilder {
     public Evento build(){
         return evento;
     }
+
 }
